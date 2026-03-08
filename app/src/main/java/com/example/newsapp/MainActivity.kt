@@ -14,14 +14,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddHome
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -29,15 +29,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.newsapp.components.lastNewItem
+import com.example.newsapp.components.WorldNewsItem
 import com.example.newsapp.models.lastNewsList
+import com.example.newsapp.models.worldNewsList
 import com.example.newsapp.ui.theme.NewsAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -55,20 +55,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Composable
 fun NewsApp(innerPadding : PaddingValues) {
     //Estructura Base
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(innerPadding)
-        .background(Color.Gray)
+        //.background(Color.Gray)
     ) {
         //TopBar
         Row(
@@ -76,9 +68,8 @@ fun NewsApp(innerPadding : PaddingValues) {
                 .padding(5.dp)
                 .fillMaxWidth()
                 .height(50.dp)
-                .border(1.dp, Color.Blue, CircleShape) // <--- Agrega esta línea
+                .border(1.dp, Color.Blue, CircleShape)
                 .clip(CircleShape),
-                //.background(Color.Cyan),
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         )
@@ -162,21 +153,30 @@ fun NewsApp(innerPadding : PaddingValues) {
             Text(
                 text = "Alrededor del mundo",
                 fontSize = 25.sp,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .padding(5.dp)
             )
 
             //lazy grid
-
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                contentPadding = PaddingValues(10.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                items(worldNewsList){
+                    worldNew -> WorldNewsItem(worldNew)
+                }
+            }
         }
-
     }
-
 }
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     NewsAppTheme {
         NewsApp(innerPadding = PaddingValues(25.dp))
-
     }
 }
