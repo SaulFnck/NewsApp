@@ -15,7 +15,7 @@ val worldNewsList = listOf(
     WorldNew(
         id = 2,
         title = "NASA descubre un nuevo exoplaneta con atmósfera similar a la Tierra",
-        image = "https://www.nasa.gov/wp-content/uploads/2023/03/exoplanet_exploration.jpg"
+        image = "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=800"
     ),
     WorldNew(
         id = 3,
@@ -35,6 +35,6 @@ val worldNewsList = listOf(
     WorldNew(
         id = 6,
         title = "Avances en medicina genómica prometen curas para enfermedades raras",
-        image = "https://images.unsplash.com/photo-1532187875605-2fe358a3d46a?auto=format&fit=crop&w=800"
+        image = "https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800"
     )
 )

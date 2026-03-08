@@ -140,7 +140,6 @@ fun NewsApp(innerPadding : PaddingValues) {
                     lastNew -> lastNewItem(lastNew)
                 }
             }
-
         }
 
         //LazyVerticalGrid
