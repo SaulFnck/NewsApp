@@ -28,8 +28,8 @@ import coil3.compose.AsyncImage
 fun WorldNewsItem(worldNew: WorldNew){
     Box(
         modifier = Modifier
-            .height(175.dp)
-            .width(150.dp)
+            .height(250.dp)
+            .width(125.dp)
             .clip(RoundedCornerShape(20.dp))
     )
     {
