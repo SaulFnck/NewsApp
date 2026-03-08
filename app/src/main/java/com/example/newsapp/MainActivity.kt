@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AddHome
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -26,8 +28,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.newsapp.ui.theme.NewsAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -58,30 +62,62 @@ fun NewsApp(innerPadding : PaddingValues) {
     Column(modifier = Modifier
         .fillMaxSize()
         .padding(innerPadding)
-        .background(Color.LightGray)
+        .background(Color.Gray)
     ) {
         //TopBar
         Row(
             modifier = Modifier
-                .padding(15.dp)
+                .padding(5.dp)
                 .fillMaxWidth()
-                .height(30.dp)
-                .clip(CircleShape)
-                .background(Color.Cyan),
+                .height(50.dp)
+                .border(1.dp, Color.Blue, CircleShape) // <--- Agrega esta línea
+                .clip(CircleShape),
+                //.background(Color.Cyan),
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
-
-        ) {
+        )
+        {
             Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = "Search"
+                imageVector = Icons.Default.AddHome,
+                contentDescription = "Search",
+                modifier = Modifier
+                    .padding(start = 10.dp, end = 10.dp)
             )
             Text(
-                text = "Search",
+                text = "Buscar",
             )
         }
 
         //RowTaps
+        Row(
+            modifier = Modifier
+                .padding(5.dp)
+                .fillMaxWidth()
+                .height(30.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+        )
+        {
+            Text(
+                text = "Noticias",
+                fontSize = 23.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+            )
+
+            Text(
+                text = "Eventos",
+                fontSize = 23.sp,
+                color = Color.LightGray,
+                fontWeight = FontWeight.Bold
+            )
+
+            Text(
+                text = "Clima",
+                fontSize = 23.sp,
+                color = Color.LightGray,
+                fontWeight = FontWeight.Bold
+            )
+        }
 
         //UltimasNoticias
 
